@@ -51,9 +51,18 @@ class Table include Enumerable
         # matchujemo key sa headerima (lowercase + space -> underscore)
         # vracamo kolonu bez headera
         column_index = @columns[key.to_s.downcase.gsub(' ', '_')]
-        column_index ? @table.column(column_index).drop(1) : nil
-        # column_data = @table.column(column_index).drop(1)
-        # Column.new(@table, column_data, column_index)
+        # column_index ? @table.column(column_index).drop(1) : nil
+        column_data = @table.column(column_index).drop(1)
+        return Column.new(@table, column_data, column_index)
+    end
+
+    def []=(key, index, value)
+        column_index = @columns[key.to_s.downcase.gsub(' ', '_')]
+        return unless column_index
+    
+        # Adjust for 1-based index
+        row_index = index + 1
+        @table.set(row_index, column_index, value)
     end
 
     def each

@@ -8,27 +8,19 @@ class Column
         @colindex = colindex
     end
 
-    def +(other_column)
-        return nil if @column.nil? || other_column.nil?
-    
-        result = @column.zip(other_column).map do |a, b|
-            a = a.to_f if a.is_a?(Numeric) rescue 0
-            b = b.to_f if b.is_a?(Numeric) rescue 0
-            a + b
-        end
-    
-        Column.new(@table, result, @colindex)
+    def [](index)
+        row_index = index + 1
+        return nil unless (1..@table.last_row).cover?(row_index)    # proveravamo da li je index u opsegu
+      
+        @table.cell(row_index, @colindex)    # vracamo vrednost celije - method from roo gem
     end
+      
+    def []=(index, value)
+        row_index = index + 1
+        return nil unless (1..@table.last_row).cover?(row_index)    # proveravamo da li je index u opsegu
 
-    # def [](index)
-    #     row_index = index + 1 # Adjust for 1-based index
-    #     @table.row(row_index)[@column_index - 1] # Access the cell value
-    #   end
-    
-    #   def []=(index, value)
-    #     row_index = index + 1 # Adjust for 1-based index
-    #     @table[row_index][@column_index] = value # Update the cell value
-    # end
+        @table.set(row_index, @colindex, value)   # podesavamo vrednost celije - method from roo gem
+    end
 
     def sum
         # sabiramo elemente niza - startna suma = 0
@@ -73,6 +65,7 @@ class Column
 
     # m - ime nepostojece metode
     def method_missing(m)
+        puts "Column method missing"
         @column.each_with_index do |col, i|
             if col.to_s.downcase.gsub(' ', '_').eql?(m.to_s.downcase.gsub(' ', '_'))
                 # dodajemo 2 jer i = 0 + preskacemo header

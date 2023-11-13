@@ -24,8 +24,8 @@ p table1["treca_kolona"][2]
 puts '------------------'
 
 # podesavamo vrednost tacnom bolju u koloni tabele
-# table1["treca_kolona"][2]= 100
-# p table1["treca_kolona"][2]
+table1["treca_kolona"][2]= 100
+p table1["treca_kolona"][2]
 puts '------------------'
 
 # pristup koloni preko istoimene metode
