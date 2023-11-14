@@ -26,15 +26,13 @@ class Table include Enumerable
     end
   
     def -(table2)
-        # ista logika kao za sabiranje
         if(@table.row(1).eql?(table2.table.row(1)))
             return @table.parse - table2.table.parse
         end
         return nil
     end
   
-    # generisemo novi Column ako ne postoji
-    # header - ime nepostojece metode
+    # generisemo novi Column ako ne postoji (param je ime kolone)
     def method_missing(header)
         column_index = @columns[header.to_s.downcase.gsub(' ', '_')]
         return super unless column_index
@@ -48,10 +46,8 @@ class Table include Enumerable
     end
   
     def [](key)
-        # matchujemo key sa headerima (lowercase + space -> underscore)
-        # vracamo kolonu bez headera
+        # matchujemo key sa headerima (lowercase + space -> underscore) -> return kolona bez headera
         column_index = @columns[key.to_s.downcase.gsub(' ', '_')]
-        # column_index ? @table.column(column_index).drop(1) : nil
         column_data = @table.column(column_index).drop(1)
         return Column.new(@table, column_data, column_index)
     end

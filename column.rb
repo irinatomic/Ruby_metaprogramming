@@ -65,13 +65,12 @@ class Column
 
     # m - ime nepostojece metode
     def method_missing(m)
-        puts "Column method missing"
+        rows_with_value = []
         @column.each_with_index do |col, i|
-            if col.to_s.downcase.gsub(' ', '_').eql?(m.to_s.downcase.gsub(' ', '_'))
                 # dodajemo 2 jer i = 0 + preskacemo header
-                return @table.row(i+2)
-            end
+                rows_with_value << @table.row(i+2) if col.to_s.downcase.gsub(' ', '_').eql?(m.to_s.downcase.gsub(' ', '_'))
         end
+        rows_with_value
     end
 
 end

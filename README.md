@@ -18,8 +18,7 @@
 9. (0.5 Poena) Moguće je oduzimanje dve tabele, sve dok su im headeri isti. Npr t1-t2, gde svaka predstavlja reprezentaciju jednog od worksheet-ova. Rezultat će vratiti novu tabelu gde su svi redovi iz t2 uklonjeni iz t1, ukoliko su identični.
 10. (0.5 Poena) Biblioteka prepoznaje prazne redove, koji mogu biti ubačeni izgleda radi
 
-Not done (1.25 poena): <br>
-6 - 3 <br>
+Not done (1.00 poena): <br>
 7   <br>
 10  - alias za row metodu
 

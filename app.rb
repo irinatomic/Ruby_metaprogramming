@@ -6,6 +6,7 @@ require './table'
 
 table1 = Table.new("data/table1.xlsx")
 table2 = Table.new("data/table2.xlsx")
+table3 = Table.new("data/table3.xlsx")
 
 # ispis tabele
 p table1.to_s
@@ -38,6 +39,8 @@ puts "avg  #{table1.prva_kolona.avg}"
 puts '------------------'
 
 # vracamo redove tabele koje imaju neko polje u koloni
+p table3.treca_kolona.rn
+puts '------------------'
 
 # map, select, reduce -> &. safety operator for nil
 table1.prva_kolona.map! { |cell| cell+(1) } 
