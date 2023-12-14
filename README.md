@@ -1,24 +1,32 @@
-## Homework 1 for Ruby
+# Ruby Metaprogramming Project
+This project is part of the "Script Languages" subject and demonstrates the use of metaprogramming in Ruby.
 
-1. (0.5 Poena) Biblioteka može da vrati dvodimenzioni niz sa vrednostima tabele
-2. (0.5 Poena) Moguće je pristupati redu preko t.row(1), i pristup njegovim elementima po sintaksi niza.
-3. (0.5 Poena) Mora biti implementiran Enumerable modul(each funkcija), gde se vraćaju sve ćelije unutar tabele, sa leva na desno.
-4. (0.5 Poena) Biblioteka treba da vodi računa o merge-ovanim poljima
-5. (1.0 Poena) [ ] sintaksa mora da bude obogaćena tako da je moguće pristupati određenim vrednostima.
-    1. Biblioteka vraća celu kolonu kada se napravi upit t[“Prva Kolona”]
-    2. Biblioteka omogućava pristup vrednostima unutar kolone po sledećoj sintaksi t[“Prva Kolona”][1] za pristup drugom elementu te kolone
-    3. Biblioteka omogućava podešavanje vrednosti unutar ćelije po sledećoj sintaksi t[“Prva Kolona”][1]= 2556
-6. (5.0 Poena) Biblioteka omogućava direktni pristup kolonama, preko istoimenih metoda.
-    1. t.prvaKolona, t.drugaKolona, t.trecaKolona
-    2. subtotal/Average neke kolone se može sračunati preko sledećih sintaksi t.prvaKolona.sum i t.prvaKolona.avg
-    3. Iz svake kolone može da se izvuče pojedinačni red na osnovu vrednosti jedne od ćelija. (smatraćemo da ta ćelija jedinstveno identifikuje taj red)Primer sintakse: t.indeks.rn2310, ovaj kod će vratiti red studenta čiji je indeks rn2310
-    4. Kolona mora da podržava funkcije kao što su map, select, reduce. Naprimer: t.prvaKolona.map { |cell| cell+=1 }
-7. (0.5 Poena) Biblioteka prepoznaje ukoliko postoji na bilo koji način ključna reč total ili subtotal unutar sheet-a, i ignoriše taj red
-8. (0.5 Poena) Moguće je sabiranje dve tabele, sve dok su im headeri isti. Npr t1+t2, gde svaka predstavlja, tabelu unutar jednog od worksheet-ova. Rezultat će vratiti novu tabelu gde su redovi (bez headera) t2 dodati unutar t1. (SQL UNION operacija)
-9. (0.5 Poena) Moguće je oduzimanje dve tabele, sve dok su im headeri isti. Npr t1-t2, gde svaka predstavlja reprezentaciju jednog od worksheet-ova. Rezultat će vratiti novu tabelu gde su svi redovi iz t2 uklonjeni iz t1, ukoliko su identični.
-10. (0.5 Poena) Biblioteka prepoznaje prazne redove, koji mogu biti ubačeni izgleda radi
+## Overview
+This repository contains a Ruby library that implements various functionalities for handling tabular data. The primary file for examples and usage is [`app.rb`](app.rb).
 
-Not done (1.00 poena): <br>
-7   <br>
-10  - alias za row metodu
+## Project Description
+The project requirements and their corresponding implementation points are outlined below:
 
+### Requirements and Implementation Points
+
+1. **Return 2D array with table values**
+2. **Access rows via `t.row(1)` and elements using array syntax**
+3. **Implement `Enumerable` module with `each` function to iterate through cells**
+4. **Handle merged fields within the library**
+5. **Enhance syntax for accessing specific values**
+    - Retrieve an entire column: `t["First Column"]`
+    - Access column values: `t["First Column"][1]` for the second element
+    - Set cell value: `t["First Column"][1] = 2556`
+6. **Allow direct column access via corresponding methods**
+    - `t.firstColumn`, `t.secondColumn`, `t.thirdColumn`
+    - Calculate subtotal/average: `t.firstColumn.sum`, `t.firstColumn.avg`
+    - Retrieve a row based on a cell value: `t.index.rn2310`
+    - Support functions like `map`, `select`, `reduce`
+7. **Recognize and ignore rows containing keywords like "total" or "subtotal"**
+8. **Enable addition of two tables with identical headers (SQL UNION operation)**
+    - `t1 + t2` combines rows from both tables
+9. **Allow subtraction of two tables with identical headers**
+    - `t1 - t2` removes rows from t2 that match t1
+
+### Not done
+- Implementation of functionality for point 7.

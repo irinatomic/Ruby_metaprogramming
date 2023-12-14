@@ -3,6 +3,3 @@
 
 # Ignore config files that may contain sensitive information
 config.json
-
-# Ignore other testing files
-test2.rb
